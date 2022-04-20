@@ -32,15 +32,9 @@ kubectl edit secret generic openhacksecret --from-literal=sql_user='sqladminzNq7
 
 
 # Rollout Backend deployments
-kubectl apply -f kubernetes/deployments/oh-poi.deploy.yaml
-kubectl apply -f kubernetes/services/oh-poi.service.yaml
-kubectl apply -f kubernetes/deployments/oh-trips.deploy.yaml
-kubectl apply -f kubernetes/services/oh-trips.service.yaml
-kubectl apply -f kubernetes/deployments/oh-user-java.deploy.yaml
-kubectl apply -f kubernetes/services/oh-user-java.service.yaml
-kubectl apply -f kubernetes/deployments/oh-userprofile.deploy.yaml
-kubectl apply -f kubernetes/services/oh-userprofile.service.yaml
+kubectl apply -f kubernetes/deployments/oh-backend.deploy.yaml
+kubectl apply -f kubernetes/services/oh-backend.service.yaml
 
 # Rollout Frontend Deployments
-kubectl apply -f kubernetes/deployments/oh-tripviewer.deploy.yaml
-kubectl apply -f kubernetes/services/oh-tripviewer.service.yaml
+kubectl apply -f kubernetes/deployments/oh-frontend.deploy.yaml
+kubectl apply -f kubernetes/services/oh-frontend.service.yaml

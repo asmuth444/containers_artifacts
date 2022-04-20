@@ -1,0 +1,181 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oh-poi
+  namespace: oh-backend
+spec:
+  selector:
+    matchLabels:
+      app: oh-poi
+  template:
+    metadata:
+      labels:
+        app: oh-poi
+    spec:
+      containers:
+      - name: poi
+        image: registryznq7406.azurecr.io/openhack/poi:latest
+        env:
+        - name: "SQL_USER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_user
+        - name: "SQL_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_password
+        - name: "SQL_SERVER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_server
+        - name: "SQL_DBNAME"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_dbname
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Local"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oh-trips
+  namespace: oh-backend
+spec:
+  selector:
+    matchLabels:
+      app: oh-trips
+  template:
+    metadata:
+      labels:
+        app: oh-trips
+    spec:
+      containers:
+      - name: trips
+        image: registryznq7406.azurecr.io/openhack/trips:latest
+        env:
+        - name: "SQL_USER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_user
+        - name: "SQL_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_password
+        - name: "SQL_SERVER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_server
+        - name: "SQL_DBNAME"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_dbname
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oh-user-java
+  namespace: oh-backend
+spec:
+  selector:
+    matchLabels:
+      app: oh-user-java
+  template:
+    metadata:
+      labels:
+        app: oh-user-java
+    spec:
+      containers:
+      - name: user-java
+        image: registryznq7406.azurecr.io/openhack/user-java:latest
+        env:
+        - name: "SQL_USER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_user
+        - name: "SQL_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_password
+        - name: "SQL_SERVER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_server
+        - name: "SQL_DBNAME"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_dbname
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oh-userprofile
+  namespace: oh-backend
+spec:
+  selector:
+    matchLabels:
+      app: oh-userprofile
+  template:
+    metadata:
+      labels:
+        app: oh-userprofile
+    spec:
+      containers:
+      - name: userprofile
+        image: registryznq7406.azurecr.io/openhack/userprofile:latest
+        env:
+        - name: "SQL_USER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_user
+        - name: "SQL_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_password
+        - name: "SQL_SERVER"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_server
+        - name: "SQL_DBNAME"
+          valueFrom:
+            secretKeyRef:
+              name: "openhacksecret"
+              key: sql_dbname
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80

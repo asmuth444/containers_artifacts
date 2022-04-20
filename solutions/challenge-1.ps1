@@ -5,33 +5,32 @@ function killContainer([string]$ContainerName) {
     docker rm $ContainerName
 }
 
-
 # Create Docker Network
 # docker network create -d bridge $DockerNetworkName
 
 $ACRName="registryznq7406.azurecr.io"
 # Build POI Container
-cd src/poi
+cd ../src/poi
 docker build -t openhack/poi  .
 docker tag openhack/poi $ACRName/openhack/poi
 docker push $ACRName/openhack/poi
 cd ../..
-cd src/trips
+cd ../src/trips
 docker build -t openhack/trips  .
 docker tag openhack/trips $ACRName/openhack/trips
 docker push $ACRName/openhack/trips
 cd ../..
-cd src/tripviewer
+cd ../src/tripviewer
 docker build -t openhack/tripviewer  .
 docker tag openhack/tripviewer $ACRName/openhack/tripviewer
 docker push $ACRName/openhack/tripviewer
 cd ../..
-cd src/user-java
+cd ../src/user-java
 docker build -t openhack/user-java  .
 docker tag openhack/user-java $ACRName/openhack/user-java
 docker push $ACRName/openhack/user-java
 cd ../..
-cd src/userprofile
+cd ../src/userprofile
 docker build -t openhack/userprofile  .
 docker tag openhack/userprofile $ACRName/openhack/userprofile
 docker push $ACRName/openhack/userprofile
