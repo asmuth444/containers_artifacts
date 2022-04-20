@@ -32,9 +32,9 @@ kubectl edit secret generic openhacksecret --from-literal=sql_user='sqladminzNq7
 
 
 # Rollout Backend deployments
-kubectl apply -f kubernetes/deployments/oh-backend.deploy.yaml
-kubectl apply -f kubernetes/services/oh-backend.service.yaml
+kubectl apply -f ../kubernetes/deployments/oh-backend.deploy.yaml
+kubectl apply -f ../kubernetes/services/oh-backend.service.yaml
 
 # Rollout Frontend Deployments
-kubectl apply -f kubernetes/deployments/oh-frontend.deploy.yaml
-kubectl apply -f kubernetes/services/oh-frontend.service.yaml
+kubectl apply -f ../kubernetes/deployments/oh-frontend.deploy.yaml
+kubectl apply -f ../kubernetes/services/oh-frontend.service.yaml
