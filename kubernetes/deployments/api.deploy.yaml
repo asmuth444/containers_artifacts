@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oh-poi
-  namespace: oh-backend
+  namespace: api
 spec:
   selector:
     matchLabels:
@@ -49,7 +49,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oh-trips
-  namespace: oh-backend
+  namespace: api
 spec:
   selector:
     matchLabels:
@@ -94,7 +94,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oh-user-java
-  namespace: oh-backend
+  namespace: api
 spec:
   selector:
     matchLabels:
@@ -139,7 +139,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oh-userprofile
-  namespace: oh-backend
+  namespace: api
 spec:
   selector:
     matchLabels:

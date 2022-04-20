@@ -3,13 +3,12 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernets.io/azure-loadbalancer-resource-group: teamsResources
-    service.beta.kubernetes.io/azure-dns-label-name: oh-tripviewer
+    service.beta.kubernetes.io/azure-dns-label-name: oh-tripviewer-rbac
   name: oh-tripviewer-service
-  namespace: oh-frontend
+  namespace: web
 spec:
-  loadBalancerIP: 20.187.109.219
   type: LoadBalancer
   selector:
-    app: oh-tripviewer
+    app: oh-tripviewer-rbac
   ports:
   - port: 80
