@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oh-tripviewer
+  namespace: oh-frontend
+spec:
+  selector:
+    matchLabels:
+      app: oh-tripviewer
+  template:
+    metadata:
+      labels:
+        app: oh-tripviewer
+    spec:
+      containers:
+      - name: tripviewer
+        image: registryznq7406.azurecr.io/openhack/tripviewer:latest
+        env:
+        - name: "TRIPS_API_ENDPOINT"
+          value: "http://10.0.185.64"
+        - name: "USERPROFILE_API_ENDPOINT"
+          value: "http://10.0.121.154"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+

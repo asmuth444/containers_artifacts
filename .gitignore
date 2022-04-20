@@ -331,3 +331,7 @@ ASALocalRun/
 
 # VSCode Local Settings
 *.vscode
+
+
+# Personal Files
+azure-login.json

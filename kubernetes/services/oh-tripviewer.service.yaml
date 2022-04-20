@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernets.io/azure-loadbalancer-resource-group: teamsResources
+    service.beta.kubernetes.io/azure-dns-label-name: oh-tripviewer
+  name: oh-tripviewer-service
+  namespace: oh-frontend
+spec:
+  loadBalancerIP: 20.187.109.219
+  type: LoadBalancer
+  selector:
+    app: oh-tripviewer
+  ports:
+  - port: 80
