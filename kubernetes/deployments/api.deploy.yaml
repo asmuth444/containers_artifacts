@@ -15,6 +15,10 @@ spec:
       containers:
       - name: poi
         image: registryznq7406.azurecr.io/openhack/poi:latest
+        volumeMounts:
+          - mountPath: "/mnt/secrets-store"
+            name: secrets-store
+            readOnly: true
         env:
         - name: "SQL_USER"
           valueFrom:
@@ -44,6 +48,13 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 80
+      volumes:
+      - name: secrets-store
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: akvname-api-csi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -62,6 +73,10 @@ spec:
       containers:
       - name: trips
         image: registryznq7406.azurecr.io/openhack/trips:latest
+        volumeMounts:
+          - mountPath: "/mnt/secrets-store"
+            name: secrets-store
+            readOnly: true
         env:
         - name: "SQL_USER"
           valueFrom:
@@ -89,6 +104,13 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 80
+      volumes:
+      - name: secrets-store
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: akvname-api-csi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -107,6 +129,10 @@ spec:
       containers:
       - name: user-java
         image: registryznq7406.azurecr.io/openhack/user-java:latest
+        volumeMounts:
+          - mountPath: "/mnt/secrets-store"
+            name: secrets-store
+            readOnly: true
         env:
         - name: "SQL_USER"
           valueFrom:
@@ -130,10 +156,17 @@ spec:
               key: sql_dbname
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "100m"
+            memory: "256Mi"
+            cpu: "300m"
         ports:
         - containerPort: 80
+      volumes:
+      - name: secrets-store
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: akvname-api-csi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -152,6 +185,10 @@ spec:
       containers:
       - name: userprofile
         image: registryznq7406.azurecr.io/openhack/userprofile:latest
+        volumeMounts:
+          - mountPath: "/mnt/secrets-store"
+            name: secrets-store
+            readOnly: true
         env:
         - name: "SQL_USER"
           valueFrom:
@@ -179,3 +216,10 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 80
+      volumes:
+      - name: secrets-store
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: akvname-api-csi

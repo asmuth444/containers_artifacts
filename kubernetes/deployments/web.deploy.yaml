@@ -17,9 +17,9 @@ spec:
         image: registryznq7406.azurecr.io/openhack/tripviewer:latest
         env:
         - name: "TRIPS_API_ENDPOINT"
-          value: "http://10.2.2.79"
+          value: "http://10.0.189.99"
         - name: "USERPROFILE_API_ENDPOINT"
-          value: "http://10.2.2.27"
+          value: "http://10.0.49.100"
         resources:
           limits:
             memory: "128Mi"
